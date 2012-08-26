@@ -302,13 +302,13 @@
 
 				this.positionRP();
 				this.rp.fadeIn(300).data('state', 'open');
-				this.options.onOpen(self);
+				this.options.onOpen(this);
 			}
 		},
 		hideRP: function(){
 			if(this.rp.data('state') == 'open'){ 
 				this.rp.fadeOut(300).data('state', 'closed');
-				this.options.onClose(self); 
+				this.options.onClose(this); 
 			}
 		},
 		toggleRP: function(){
