@@ -20,10 +20,10 @@
  * --------------------------------------------------------------------
  */
 (function($) {  
-  $.widget("ux.daterangepicker", {
-    // These options will be used as defaults
-    options: {
-      //commented all of these out, let the user decide which options they want.
+	$.widget("ux.daterangepicker", {
+		// These options will be used as defaults
+		options: {
+			//commented all of these out, let the user decide which options they want.
 			presetRanges: [
 				//{text: 'Today', dateStart: 'today', dateEnd: 'today' },
 				//{text: 'Last 7 days', dateStart: 'today-7days', dateEnd: 'today' },
@@ -39,9 +39,9 @@
 			//presetRanges: array of objects for each menu preset. 
 			//Each obj must have text, dateStart, dateEnd. dateStart, dateEnd accept date.js string or a function which returns a date object
 			presets: {
-        //again, commented out
-        // allDatesBefore: 'All Dates Before', 
-        // allDatesAfter: 'All Dates After',         
+				//again, commented out
+				// allDatesBefore: 'All Dates Before', 
+				// allDatesAfter: 'All Dates After',         
 				specificDate: 'Specific Date', 
 				dateRange: 'Date Range'
 			},
@@ -63,13 +63,13 @@
 			onChange: function(daterangepicker){},
 			datepickerOptions: null //object containing native UI datepicker API options
 		},
-    _create: function() {
-      var self = this;
+		_create: function() {
+			var self = this;
 
-      this.rangeInput = this.element;
+			this.rangeInput = this.element;
 
-      //convenient access for old code.
-      var rangeInput = this.rangeInput; 
+			//convenient access for old code.
+			var rangeInput = this.rangeInput; 
 			var options = this.options;
 
 			//allows us to find other instances of the datepicker easily
@@ -108,8 +108,8 @@
 			
 			//change event fires both when a calendar is updated or a change event on the input is triggered
 			rangeInput.bind('change', function() {
-        options.onChange(self);
-      });
+				options.onChange(self);
+			});
 			
 			//datepicker options from options
 			options.datepickerOptions = $.extend(datepickerOptions, options.datepickerOptions);	
@@ -168,13 +168,13 @@
 						
 			//function to format a date string        
 			function fDate(date){
-			   if(!date.getDate()){return '';}
-			   var day = date.getDate();
-			   var month = date.getMonth();
-			   var year = date.getFullYear();
-			   month++; // adjust javascript month
-			   var dateFormat = options.dateFormat;
-			   return jQuery.datepicker.formatDate( dateFormat, date ); 
+				 if(!date.getDate()){return '';}
+				 var day = date.getDate();
+				 var month = date.getMonth();
+				 var year = date.getFullYear();
+				 month++; // adjust javascript month
+				 var dateFormat = options.dateFormat;
+				 return jQuery.datepicker.formatDate( dateFormat, date ); 
 			}
 			
 			
@@ -292,7 +292,7 @@
 			}); 
 
 			rp.click(function(){return false;}).hide();
-    },
+		},
 
 		showRP: function() {
 			if(this.rp.data('state') == 'closed') {
@@ -330,8 +330,8 @@
 			this.rp.parent().css(side, val).css('top', riOffset.top + relEl.outerHeight());
 		},
 
-    //preset menu click events
-    _clickActions: function(el, rp, rpPickers, doneBtn){
+		//preset menu click events
+		_clickActions: function(el, rp, rpPickers, doneBtn){
 			if(el.is('.ui-daterangepicker-specificDate')){
 				//Specific Date (show the "start" calendar)
 				doneBtn.hide();
@@ -383,19 +383,19 @@
 			
 			return false;
 		},
-    _setOption: function(key, value) {
-      // Use the _setOption method to respond to changes to options
-      $.Widget.prototype._setOption.apply(this,arguments);
-    },
-    destroy: function() {
-      // TODO reverse everything we've applied
-      this.rangeInput.removeClass('daterangePickerInput');
-      this.rp.closest('.ui-daterangepickercontain').remove();
-      this.rpPickers.each(function(index, item) {
-        $(item).datepicker('destroy');
-      });
+		_setOption: function(key, value) {
+			// Use the _setOption method to respond to changes to options
+			$.Widget.prototype._setOption.apply(this,arguments);
+		},
+		destroy: function() {
+			// TODO reverse everything we've applied
+			this.rangeInput.removeClass('daterangePickerInput');
+			this.rp.closest('.ui-daterangepickercontain').remove();
+			this.rpPickers.each(function(index, item) {
+				$(item).datepicker('destroy');
+			});
 
-      $.Widget.prototype.destroy.call(this);
-    }
-  });
+			$.Widget.prototype.destroy.call(this);
+		}
+	});
 })(jQuery);
