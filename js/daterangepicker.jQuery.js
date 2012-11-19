@@ -41,7 +41,7 @@
 			presets: {
 				//again, commented out
 				// allDatesBefore: 'All Dates Before', 
-				// allDatesAfter: 'All Dates After',				 
+				// allDatesAfter: 'All Dates After',
 				specificDate: 'Specific Date', 
 				dateRange: 'Date Range'
 			},
