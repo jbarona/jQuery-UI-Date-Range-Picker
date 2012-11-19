@@ -128,26 +128,24 @@
 			//Capture Dates from input(s)
 			var inputDateA, inputDateB = Date.parse('today');
 			var inputDateAtemp, inputDateBtemp;
-			var parseDate = function(input){
-				try{
-					return $.datepicker.parseDate( options.dateFormat, input );
-				} catch (exception){
-					return Date.parse(input);
+
+			var parseDate = function(input) {
+				if (!input) {
+					return null;
 				}
+
+				return $.datepicker.parseDate(options.dateFormat, input);
 			};
-			if(rangeInput.size() == 2){
-				inputDateAtemp = parseDate( rangeInput.eq(0).val() );
-				inputDateBtemp = parseDate( rangeInput.eq(1).val() );
-				if(inputDateAtemp == null){inputDateAtemp = inputDateBtemp;}
-				if(inputDateBtemp == null){inputDateBtemp = inputDateAtemp;}
+
+			if (rangeInput.size() == 2) {
+				inputDateA = parseDate(rangeInput.eq(0).val()) || new Date;
+				inputDateB = parseDate(rangeInput.eq(1).val()) || new Date;
+			} else {
+				var items = rangeInput.val().split(options.rangeSplitter);
+
+				inputDateA = parseDate($.trim(items[0])) || new Date;
+				inputDateB = parseDate($.trim(items[1])) || new Date;
 			}
-			else {
-				inputDateAtemp = parseDate( rangeInput.val().split(options.rangeSplitter)[0] );
-				inputDateBtemp = parseDate( rangeInput.val().split(options.rangeSplitter)[1] );
-				if(inputDateBtemp == null){inputDateBtemp = inputDateAtemp;} //if one date, set both
-			}
-			if(inputDateAtemp != null){inputDateA = inputDateAtemp;}
-			if(inputDateBtemp != null){inputDateB = inputDateBtemp;}
 
 
 			//build picker and 
