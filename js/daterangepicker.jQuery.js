@@ -29,6 +29,7 @@
 				//{text: 'Last 7 days', dateStart: 'today-7days', dateEnd: 'today' },
 				//{text: 'Month to date', dateStart: function(){ return Date.parse('today').moveToFirstDayOfMonth();	}, dateEnd: 'today' },
 				//{text: 'Year to date', dateStart: function(){ var x= Date.parse('today'); x.setMonth(0); x.setDate(1); return x; }, dateEnd: 'today' },
+				//extras:
 				//{text: 'The previous Month', dateStart: function(){ return Date.parse('1 month ago').moveToFirstDayOfMonth();	}, dateEnd: function(){ return Date.parse('1 month ago').moveToLastDayOfMonth();	} }
 				//{text: 'Tomorrow', dateStart: 'Tomorrow', dateEnd: 'Tomorrow' },
 				//{text: 'Ad Campaign', dateStart: '03/07/08', dateEnd: 'Today' },
