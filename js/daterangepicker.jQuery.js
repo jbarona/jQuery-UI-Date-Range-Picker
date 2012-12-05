@@ -92,12 +92,6 @@
 						var rangeA = fDate( range_start.datepicker('getDate') );
 						var rangeB = fDate( range_end.datepicker('getDate') );
 
-						if ($(this).is('.range-start')) {
-							range_end.datepicker('option', 'minDate', rangeA);
-						} else {
-							range_start.datepicker('option', 'maxDate', rangeB);
-						}
-
 						//send back to input or inputs
 						if (rangeInput.length == 2) {
 							rangeInput.eq(0).val(rangeA);
